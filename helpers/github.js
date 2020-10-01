@@ -1,14 +1,18 @@
 const axios = require("axios");
 const config = require("../config.js");
 
-let getReposByUsername = (/* TODO */) => {
+let getReposByUsername = username => {
   let options = {
-    url: "FILL ME IN",
+    url: `https://api.github.com/users/${username}/repos`,
     headers: {
       "User-Agent": "request",
       Authorization: `token ${config.TOKEN}`,
-    },
+    }
   };
+
+  return axios(options);
+  // should return a promise
 };
 
-module.exports.getReposByUsername = getReposByUsername;
+
+module.exports = getReposByUsername;
